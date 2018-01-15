@@ -10,6 +10,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertTrue;
@@ -31,28 +34,20 @@ public class Alfa {
        // driver.get("https://alfabank.ru/");
          driver.get("https://yandex.ru");
 
-      //  driver.manage().window().maximize();
-            WebElement searchBox = driver.findElement(By.xpath("//input[@id='text']"));
+        WebElement searchBox = driver.findElement(By.xpath("//input[@id='text']"));
 
-            searchBox.sendKeys("Альфа Банк");
-            searchBox.submit();
+        searchBox.sendKeys("Альфа Банк");
+        searchBox.submit();
+
         ((JavascriptExecutor)driver).executeScript("scroll(0,400)");
         WebElement alfaHref = driver.findElement(By.xpath("//a/b[text()='AlfaBank.ru']"));
-            alfaHref.click();
+        alfaHref.click();
 
+        Set<String> wn = driver.getWindowHandles();
 
-            WebDriverWait wait = new WebDriverWait(driver, 45);
-
+        WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Работайте у нас']")));
         driver.findElement(By.xpath("//a[text()='Работайте у нас']")).click();
-
-           // wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='http://job.alfabank.ru/']")));
-          //  driver.findElement(By.xpath("//a[@href='http://job.alfabank.ru/']")).click();
-
-
-          //  ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", job);
-          //  ((JavascriptExecutor)driver).executeScript("scroll(0,400)");
-           // job.click();
 
         }
     }
