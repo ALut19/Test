@@ -20,7 +20,9 @@ public class Sber_Task_1 {
 
     @Test
     public void main () throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver", "c:/drv/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:/Java/driver/chromedriver_win32/chromedriver.exe");
+        //C:/Java/driver/chromedriver_win32/chromedriver.exe
+        //c:/drv/chromedriver.exe
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
         WebDriver driver = new ChromeDriver(options);
@@ -33,7 +35,9 @@ public class Sber_Task_1 {
         Thread.sleep(5000);
         WebElement insuranse = driver.findElement(By.xpath("//a[@aria-label='Раздел Застраховать себя  и имущество']"));
         insuranse.click();
-        Thread.sleep(7000);
+        Thread.sleep(5000);
+        insuranse.click();
+        Thread.sleep(5000);
         insuranse.click();
 
         // 3. Выбрать – Страхование путешественников
@@ -94,7 +98,12 @@ public class Sber_Task_1 {
         numDoc.sendKeys("123579");
         WebElement actDocDate = driver.findElement(By.xpath("//input[@ng-model='formdata.insurer.documentList[0].ISSUEDATE']"));
         actDocDate.sendKeys("02102008");
-        WebElement issuedDoc = driver.findElement(By.xpath("//input[@ng-model='formdata.insurer.documentList[0].ISSUEDBY']"));
+    //    WebElement actDocDateclick = driver.findElement(By.xpath("//img[@class='ui-datepicker-trigger']"));
+     //   System.out.println("галочка");
+     //   actDocDateclick.click();
+     //   numDoc.click();
+        WebElement issuedDoc = driver.findElement(By.xpath("//textarea[@ng-model='formdata.insurer.documentList[0].ISSUEDBY']"));
+        System.out.println("Выдан");
         issuedDoc.sendKeys("ОВД г. Тамбов");
 
 
